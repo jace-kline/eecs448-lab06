@@ -1,0 +1,5 @@
+1. The peekFront() method returns elements in a Last-in-first-out order,
+just like a stack. The correct order should be first-in-first-out.
+
+2. The dequeue() method's return docstring says that it should return the value of
+the entry at the front of the queue, but it returns void.

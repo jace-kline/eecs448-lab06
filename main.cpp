@@ -12,7 +12,7 @@
 #include <iostream>
 #include <stdexcept>
 #include "Queue.h"
-#include "../tests/Test.h"
+#include "Test.h"
 
 int main()
 {
