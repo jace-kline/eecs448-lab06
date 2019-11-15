@@ -118,6 +118,14 @@ bool Test::peekFront_runtime_error_on_empty() {
     return false;
 }
 
+bool Test::peekFront_FIFO_order() {
+    Queue q;
+    q.enqueue(1);
+    q.enqueue(2);
+    if(q.peekFront() == 2) return false;
+    return true;
+}
+
 void Test::print_test_status() {
     std::string passedMsg = passed ? "PASSED" : "FAILED";
     std::cout << "Test " << this->testCount
@@ -153,17 +161,21 @@ void Test::run() {
 
     for(int i=1; i < 102; i+=25) {
         run_test(enqueue_peekFront_same_content(i),
-                "Enqueueing " + std::to_string(i) + " elements, then peeking " + std::to_string(i) + " elements results in same values");
+                "Enqueueing " + std::to_string(i) + " elements, then peeking " + std::to_string(i) + " elements results in same values in FIFO order");
     }
 
     for(int i=1; i < 102; i+=25) {
         run_test(enqueue_peekFront_same_content_stack(i),
-                "Enqueueing " + std::to_string(i) + " elements, then peeking " + std::to_string(i) + " elements results in same values in reverse");
+                "Enqueueing " + std::to_string(i) + " elements, then peeking " + std::to_string(i) + " elements results in same values in FILO order");
     }
+
+    run_test(peekFront_FIFO_order(),
+            "Queue returns elements in first-in-first-out (FIFO) order");
 
     run_test(dequeue_runtime_error_on_empty(), 
             "Dequeue with empty queue throws a runtime error");
 
     run_test(peekFront_runtime_error_on_empty(),
             "Peeking front with empty queue results in runtime error");
+
 }

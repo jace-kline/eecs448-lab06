@@ -1,5 +1,12 @@
-1. The peekFront() method returns elements in a Last-in-first-out order,
-just like a stack. The correct order should be first-in-first-out.
+1. The peekFront() method returns elements in a First-in-last-out order,
+just like a stack. The correct order should be first-in-first-out. This could
+be an issue of the peekFront() method if we assume that the enqueue() method 
+is implemented correctly. It could also be an issue of the enqueue() method, if
+we assume that the peekFront() method is implemented correctly.
 
-2. The dequeue() method's return docstring says that it should return the value of
-the entry at the front of the queue, but it returns void.
+2. The dequeue() method's '@return' documentation comment says that it should 
+return the value of the entry at the front of the queue, but it returns void.
+
+3. Using the valgrind program to test for memory leaks, it is found that there is
+heap-allocated memory used by the Queue class that is not freed. Hence, the Queue
+class has memory leaks.

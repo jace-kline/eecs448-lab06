@@ -25,6 +25,7 @@ class Test {
         bool enqueue_peekFront_same_content_stack(int n);
         bool dequeue_runtime_error_on_empty();
         bool peekFront_runtime_error_on_empty();
+        bool peekFront_FIFO_order();
 };
 
 
